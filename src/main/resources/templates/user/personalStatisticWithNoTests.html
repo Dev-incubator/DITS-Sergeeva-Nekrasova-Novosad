@@ -1,0 +1,23 @@
+<div th:replace="/fragments/header"></div>
+
+<main>
+    <div class="container">
+        <div class="title">
+            <h1 class="start">Ivanov Andrey</h1>
+        </div>
+        <div>
+            <h5>You haven't finished any test yet</h5>
+        </div>
+        <button type="submit" class="btn submit-button w-25 mt-3" id="startTestButton">
+            Start now
+        </button>
+    </div>
+</main>
+
+<div th:replace="/fragments/footer"></div>
+<div th:replace="/fragments/modals"></div>
+
+<script src="../../static/js/user-statistic.js" th:src="@{/js/user-statistic.js}"></script>
+
+</body>
+</html>
