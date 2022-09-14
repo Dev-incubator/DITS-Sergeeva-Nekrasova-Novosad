@@ -85,15 +85,15 @@ public class TestPageController {
                                 HttpSession session){
 
 
-//        List<QuestionDTO> questions = (List<QuestionDTO>) session.getAttribute("questions");
-//        int questionNumber = questions.size();
-//        boolean isCorrect = answerService.isRightAnswer(answeredQuestion,questions,questionNumber);
-//        UserInfoDTO user = (UserInfoDTO) session.getAttribute("user");
-//        List<StatisticDTO> statisticList = (List<StatisticDTO>) session.getAttribute("statistics");
-//
-//        checkIfResultPage(questions, questionNumber, isCorrect, user, statisticList);
-//        statisticService.saveListOfStatisticsToDB(statisticList);
-//        model.addAttribute("title","Result");
+        List<QuestionDTO> questions = (List<QuestionDTO>) session.getAttribute("questions");
+        int questionNumber = questions.size();
+        boolean isCorrect = answerService.isRightAnswer(answeredQuestion,questions,questionNumber);
+        UserInfoDTO user = (UserInfoDTO) session.getAttribute("user");
+        List<StatisticDTO> statisticList = (List<StatisticDTO>) session.getAttribute("statistics");
+
+        checkIfResultPage(questions, questionNumber, isCorrect, user, statisticList);
+        statisticService.saveListOfStatisticsToDB(statisticList);
+        model.addAttribute("title","Result");
         return "user/resultPage";
     }
 
