@@ -5,8 +5,8 @@
         <div class="container d-flex flex-column">
             <div class="title justify-content-center">
                 <div class="d-flex align-items-baseline">
-                    <h1>Topic 1. Basic structure of Java program</h1>
-                    <h3>/Java 2 Fundamentals</h3>
+                    <h1 th:text="${session.topicName}">Topic 1. Basic structure of Java program</h1>
+                    <h3 th:text="${session.testName}">/Java 2 Fundamentals</h3>
                 </div>
             </div>
             <div class="result">
@@ -16,29 +16,31 @@
                     </div>
                     <div class="row result__body">
                         <div class="result__control">
-                            <h2>100%</h2>
-                            <h2>(55/75)</h2>
+                            <h2 th:text="${session.percentageOfCorrect} + '%'">100%</h2>
+                            <h2 th:text="${session.quantityOfRightAnswers} + '/' + ${session.questionSize}">(55/75)</h2>
                         </div>
                     </div>
                     <div class="result">
                         <div class="count-answers">
                             <p>Correct answers</p>
-                            <p>55</p>
+                            <p th:text="${session.quantityOfRightAnswers}">55</p>
                         </div>
                         <div class="count-answers">
                             <p>Wrong answers</p>
-                            <p>20</p>
+                            <p th:text="${session.questionSize} - ${session.quantityOfRightAnswers}">20</p>
                         </div>
                     </div>
                     <div class="row grid__item" id="resultTableBody">
                     </div>
                 </div>
             </div>
+            <form th:action="@{/user/statistics}" class="row" method="get">
             <div class="w-75 mx-auto">
                 <button class="btn submit-button mt-5 w-100" type="submit">
                     Show all my statistics
                 </button>
             </div>
+            </form>
         </div>
     </div>
 </main>

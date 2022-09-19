@@ -92,8 +92,11 @@ public class TestPageController {
         List<StatisticDTO> statisticList = (List<StatisticDTO>) session.getAttribute("statistics");
 
         checkIfResultPage(questions, questionNumber, isCorrect, user, statisticList);
+        long correctAnswersCount = countCorrectAnswers(statisticList);
         statisticService.saveListOfStatisticsToDB(statisticList);
         model.addAttribute("title","Result");
+        session.setAttribute("quantityOfRightAnswers", correctAnswersCount);
+        session.setAttribute("percentageOfCorrect", countPercentage(correctAnswersCount, questionNumber));
         return "user/resultPage";
     }
 
@@ -111,5 +114,11 @@ public class TestPageController {
         return statisticList.size() >= questionNumber;
     }
 
+    private long countCorrectAnswers(List<StatisticDTO> statisticList) {
+        return statisticList.stream().filter(statisticDTO -> statisticDTO.isCorrect()).count();
+    }
 
+    private int countPercentage(long correctAnswersCount, int questionNumber) {
+        return (int) Math.round(((double) correctAnswersCount / (double) questionNumber) * 100);
+    }
 }
