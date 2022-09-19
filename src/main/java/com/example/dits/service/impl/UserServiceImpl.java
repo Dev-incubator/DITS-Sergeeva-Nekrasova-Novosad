@@ -2,7 +2,9 @@ package com.example.dits.service.impl;
 
 import com.example.dits.DAO.UserRepository;
 import com.example.dits.dto.UserInfoDTO;
+import com.example.dits.entity.Role;
 import com.example.dits.entity.User;
+import com.example.dits.service.RoleService;
 import com.example.dits.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -19,9 +21,10 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
     private final ModelMapper modelMapper;
+    private final RoleService roleService;
 
     @Transactional
-    public UserInfoDTO getUserInfoByLogin(String login){
+    public UserInfoDTO getUserInfoByLogin(String login) {
         return modelMapper.map(repository.getUserByLogin(login), UserInfoDTO.class);
     }
 
@@ -33,5 +36,37 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserInfoDTO> getAllUsers() {
         return repository.findAll().stream().map(f -> modelMapper.map(f, UserInfoDTO.class)).collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public void save(UserInfoDTO userInfoDTO) {
+        Role role = roleService.getRoleByRoleName(userInfoDTO.getRole());
+        User user = User.builder()
+                .firstName(userInfoDTO.getFirstName())
+                .lastName(userInfoDTO.getLastName())
+                .role(role)
+                .login(userInfoDTO.getLogin())
+                .password(userInfoDTO.getPassword())
+                .build();
+        repository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public void update(UserInfoDTO userInfoDTO, int id) {
+        User editUser = repository.getById(id);
+        Role role = roleService.getRoleByRoleName(userInfoDTO.getRole());
+        editUser.setFirstName(userInfoDTO.getFirstName());
+        editUser.setLastName(userInfoDTO.getLastName());
+        editUser.setRole(role);
+        editUser.setLogin(userInfoDTO.getLogin());
+        editUser.setPassword(userInfoDTO.getPassword());
+    }
+
+    @Transactional
+    @Override
+    public void delete(int id) {
+        repository.deleteById(id);
     }
 }
