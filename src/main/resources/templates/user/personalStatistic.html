@@ -42,13 +42,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row grid__item" id="resultTableBody" th:each="testStatistic, iter : ${session.userStatistics.getTestStatisticList()}">
-                                <div class="col-1 text-start d-none d-md-block" th:text="${iter.count}">#</div>
-                                <div class="col-md-8 col-sm-7 text-start mb-2 grid__head-item" th:text="${testStatistic.testName}">Name of the test</div>
-                                <div class="col-md-3 col-sm-5 text-center d-flex justify-content-between">
-                                    <div class="text-center grid__head-item" th:text="${testStatistic.count}">Pass</div>
-                                    <div class="text-center grid__head-item">
-                                        <span th:text="${testStatistic.avgProc}">Average</span>
+                            <div id="resultTableBody">
+                                <div class="row grid__item test" th:each="testStatistic, iter : ${session.userStatistics.getTestStatisticList()}">
+                                    <div class="col-1 text-start d-none d-md-block" th:text="${iter.count}">#</div>
+                                    <div class="col-md-8 col-sm-7 text-start mb-2" th:text="${testStatistic.testName}">Name of the test</div>
+                                    <div class="col-md-3 col-sm-5  text-center d-flex justify-content-between">
+                                        <div class="text-centergrid__head-item" th:text="${testStatistic.count}">Pass</div>
+                                        <div class="text-center grid__head-item">
+                                            <span th:text="${testStatistic.avgProc}">Average</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

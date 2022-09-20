@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -31,6 +32,7 @@ public class UserStatisticController {
 
         List<Statistic> statisticList = statisticService.getStatisticsByUser(user);
         UserStatistics userStatistics = statisticMapper.getUserStatistics(user, statisticList);
+        Collections.sort(userStatistics.getTestStatisticList());
         session.setAttribute("userStatistics", userStatistics);
         return "user/personalStatistic";
     }
