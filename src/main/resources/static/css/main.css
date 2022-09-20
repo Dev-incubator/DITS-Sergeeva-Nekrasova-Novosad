@@ -871,12 +871,17 @@ body {
 
 .user-info__name {
     font-size: 18px;
+    width: 30%;
     color: #007802;
 }
 
 .user-info__email {
     font-size: 18px;
     color: #F78F0F;
+}
+
+.user__email__left {
+    padding-left: 50px;
 }
 
 .user-info__control {
@@ -1049,26 +1054,21 @@ body {
 }
 
 .message-delete-button-cancel{
-    position: absolute;
-    left: 3%;
-    right: 53%;
-    top: 75%;
-    bottom: 12.5%;
+    font-size: 24px;
+    font-weight: 500;
 
-    background: #F78F0F;
+    background-color: #F78F0F;
 
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
 }
 
 .message-delete-button-accept{
-    position: absolute;
-    left: 53%;
-    right: 3%;
-    top: 75%;
-    bottom: 12.5%;
+    font-size: 24px;
+    font-weight: 500;
 
-    background: #008f02;
+    background-color: #008f02;
+    color: #fff;
 
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
