@@ -128,7 +128,7 @@ class TestPageControllerTest {
     }
 
     private UserInfoDTO initializeUserInfoDTO() {
-        return new UserInfoDTO(1, "firstName", "lastName", "user", "USER");
+        return new UserInfoDTO(1, "firstName", "lastName", "user", "USER", "somePassword");
     }
 
     private List<QuestionDTO> initializeQuestionDTOList() {
