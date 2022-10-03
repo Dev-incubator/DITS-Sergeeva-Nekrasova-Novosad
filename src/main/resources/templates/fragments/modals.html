@@ -67,7 +67,7 @@
                 <span>Surname</span>
                 <input class="col-12 form-input" name="lastName" type="text" required>
                 <span>Role</span>
-                <select class="col-12 form-input">
+                <select class="col-12 form-input" id="choose role" name="role" required>
                     <option selected>User/Admin</option>
                     <option value="ROLE_USER">User</option>
                     <option value="ROLE_ADMIN">Admin</option>
@@ -99,7 +99,7 @@
                 <span>Surname</span>
                 <input class="col-12 form-input" name="lastName" type="text" required>
                 <span>Role</span>
-                <select class="col-12 form-input">
+                <select class="col-12 form-input" id="role" name="role" required>
                     <option selected>User/Admin</option>
                     <option value="ROLE_USER">User</option>
                     <option value="ROLE_ADMIN">Admin</option>
@@ -130,8 +130,11 @@
                     <p class="modal__description mb-3">
                     <h3>This action will delete all related items</h3></p>
                     <div class="d-flex justify-content-between">
-                        <button type="button" class="message-delete-button-cancel w-50">Cancel</button>
-                        <button type="submit" class="message-delete-button-accept w-50 confirm-button">Accept</button>
+                        <button type="button" class="message-delete-button-cancel w-50" data-bs-dismiss="modal">Cancel
+                        </button>
+                        <button type="submit" class="message-delete-button-accept w-50 confirm-button"
+                                data-bs-dismiss="modal">Accept
+                        </button>
                     </div>
                 </div>
             </div>

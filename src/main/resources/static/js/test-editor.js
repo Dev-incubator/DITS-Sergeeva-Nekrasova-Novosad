@@ -47,7 +47,7 @@ addThemeForm.addEventListener('submit', async (event) => {
     const newThemeValue = addThemeFormInput.value;
     deactivateAddThemeForm();
     if (newThemeValue.length) {
-        addTopic().then();
+        addTopic(newThemeValue).then();
     }
 });
 
@@ -100,7 +100,7 @@ detailList.addEventListener('click', ({target}) => {
     }
 });
 
-async function addTopic() {
+async function addTopic(newThemeValue) {
     const url = new URL(baseUrl + "/admin/addTopic");
     const topic = {topicName: newThemeValue};
     const response = await fetch(url.toString(), {
