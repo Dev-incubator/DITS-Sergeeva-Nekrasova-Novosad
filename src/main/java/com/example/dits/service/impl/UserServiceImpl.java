@@ -6,8 +6,10 @@ import com.example.dits.entity.Role;
 import com.example.dits.entity.User;
 import com.example.dits.service.RoleService;
 import com.example.dits.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,13 +17,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-@RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
-
     private final UserRepository repository;
     private final ModelMapper modelMapper;
     private final RoleService roleService;
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public UserServiceImpl(UserRepository repository, ModelMapper modelMapper, RoleService roleService) {
+        this.repository = repository;
+        this.modelMapper = modelMapper;
+        this.roleService = roleService;
+        this.passwordEncoder = new BCryptPasswordEncoder();
+    }
 
     @Transactional
     public UserInfoDTO getUserInfoByLogin(String login) {
@@ -47,7 +56,7 @@ public class UserServiceImpl implements UserService {
                 .lastName(userInfoDTO.getLastName())
                 .role(role)
                 .login(userInfoDTO.getLogin())
-                .password(userInfoDTO.getPassword())
+                .password(passwordEncoder.encode(userInfoDTO.getPassword()))
                 .build();
         repository.save(user);
     }
