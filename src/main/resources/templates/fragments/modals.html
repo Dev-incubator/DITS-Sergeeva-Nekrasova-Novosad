@@ -95,9 +95,9 @@
             </div>
             <form class="d-flex flex-column" th:action="@{/admin/editUser}" id="editUserForm" method="post">
                 <span>Name</span>
-                <input class="col-12 form-input" name="firstName" type="text" required>
+                <input class="col-12 form-input" id="firstName" name="firstName" type="text" required>
                 <span>Surname</span>
-                <input class="col-12 form-input" name="lastName" type="text" required>
+                <input class="col-12 form-input" id="lastName" name="lastName" type="text" required>
                 <span>Role</span>
                 <select class="col-12 form-input" id="role" name="role" required>
                     <option selected>User/Admin</option>
@@ -105,11 +105,11 @@
                     <option value="ROLE_ADMIN">Admin</option>
                 </select>
                 <span>Login</span>
-                <input class="col-12 form-input" name="login" type="text" required>
+                <input class="col-12 form-input" id="login" name="login" type="text" required>
                 <span>Password</span>
-                <input class="col-12 form-input" name="password" type="password" required>
+                <input class="col-12 form-input" id="password" name="password" type="password" required>
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                <button class="form-button mt-5 btn" type="submit" id="editUserFormCloseButton" data-bs-dismiss="modal">
+                <button class="form-button mt-5 btn" type="submit" id="editUserFormCloseButton" data-bs-target="#editUserModal" data-bs-dismiss="modal">
                     Submit
                 </button>
             </form>
