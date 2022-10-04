@@ -3,7 +3,10 @@ package com.example.dits.controllers;
 import com.example.dits.DAO.UserRepository;
 import com.example.dits.dto.TestStatistic;
 import com.example.dits.dto.TopicDTO;
+import com.example.dits.dto.UserStatistics;
 import com.example.dits.entity.Statistic;
+import com.example.dits.entity.User;
+import com.example.dits.mapper.StatisticMapper;
 import com.example.dits.service.TopicService;
 import com.example.dits.service.impl.StatisticServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -23,6 +27,7 @@ public class AdminStatisticController {
     private final StatisticServiceImpl statisticService;
     private final TopicService topicService;
     private final UserRepository userRepository;
+    private final StatisticMapper statisticMapper;
 
     @GetMapping("/adminStatistic")
     public String testStatistic(ModelMap model){
@@ -46,8 +51,12 @@ public class AdminStatisticController {
 
     @ResponseBody
     @GetMapping("/getUserTestsStatistic")
-    public List<Statistic> getUserTestsStatistic(@RequestParam int id) {
-        return statisticService.getStatisticsByUser(userRepository.getById(id));
+    public List<TestStatistic> getUserTestsStatistic(@RequestParam int id) {
+        User user = userRepository.getById(id);
+        List<Statistic> statisticList = statisticService.getStatisticsByUser(user);
+        UserStatistics userStatistics = statisticMapper.getUserStatistics(user, statisticList);
+        Collections.sort(userStatistics.getTestStatisticList());
+        return userStatistics.getTestStatisticList();
     }
 
     @ResponseBody
