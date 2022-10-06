@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
         editUser.setLastName(userInfoDTO.getLastName());
         editUser.setRole(role);
         editUser.setLogin(userInfoDTO.getLogin());
-        editUser.setPassword(userInfoDTO.getPassword());
+        editUser.setPassword(passwordEncoder.encode(userInfoDTO.getPassword()));
     }
 
     @Transactional
