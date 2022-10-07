@@ -13,5 +13,4 @@ public class StatisticDTO {
     private int questionId;
     private String username;
     private boolean isCorrect;
-
 }

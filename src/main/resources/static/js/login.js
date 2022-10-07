@@ -11,5 +11,3 @@ passwordControl.addEventListener('click', (event) => {
         passwordInput.setAttribute('type', 'text');
     }
 });
-
-

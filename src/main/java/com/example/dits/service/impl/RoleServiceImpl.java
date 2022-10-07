@@ -60,5 +60,4 @@ public class RoleServiceImpl implements RoleService {
     public Role getRoleByRoleName(String roleName) {
         return repo.getRoleByRoleName(roleName);
     }
-
 }

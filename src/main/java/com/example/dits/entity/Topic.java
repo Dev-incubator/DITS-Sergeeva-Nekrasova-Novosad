@@ -40,5 +40,4 @@ public class Topic {
     orphanRemoval = true)
     @ToString.Exclude
     private List<Test> testList;
-
 }
