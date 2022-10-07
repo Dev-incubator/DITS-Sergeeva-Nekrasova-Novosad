@@ -16,5 +16,4 @@ public class UserStatistics{
     private String lastName;
     private String login;
     private List<TestStatistic> testStatisticList;
-
 }

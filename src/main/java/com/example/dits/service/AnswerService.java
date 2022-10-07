@@ -17,5 +17,4 @@ public interface AnswerService {
     List<Answer> getAnswersByQuestion(Question question);
     List<AnswerDTO> getAnswersFromQuestionList(List<QuestionDTO> questionList, int index);
     boolean isRightAnswer(List<Integer> answeredQuestion, List<QuestionDTO> questionList, int questionNumber);
-
 }

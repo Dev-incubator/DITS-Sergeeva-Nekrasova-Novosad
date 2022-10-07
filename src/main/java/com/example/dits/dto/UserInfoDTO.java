@@ -13,5 +13,4 @@ public class UserInfoDTO {
     private String login;
     private String role;
     private String password;
-
 }

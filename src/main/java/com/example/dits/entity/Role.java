@@ -28,7 +28,4 @@ public class Role {
     inverseJoinColumns = @JoinColumn(name = "userId"))
     @ToString.Exclude
     private List<User> users;
-
-
-
 }

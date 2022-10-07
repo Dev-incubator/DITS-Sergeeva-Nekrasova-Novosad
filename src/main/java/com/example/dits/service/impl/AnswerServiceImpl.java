@@ -96,5 +96,4 @@ public class AnswerServiceImpl implements AnswerService {
                 .map(f -> modelMapper.map(f, AnswerDTO.class))
                 .collect(Collectors.toList());
     }
-
 }

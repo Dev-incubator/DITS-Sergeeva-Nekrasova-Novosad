@@ -62,5 +62,4 @@ public class SecurityController {
         return SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
     }
-
 }

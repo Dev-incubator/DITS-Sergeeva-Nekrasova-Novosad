@@ -1,23 +1,3 @@
-/**
- * TODO:
- *
- * - rewrite using classes
- * - add function to send custom request and rewrite all functions
- * that sending requests using new function. Here I mean next functions:
- * -- addThemeForm.addEventListener
- * -- getTestsData
- * -- submitNewTheme
- * -- deleteTheme
- * -- addNewTest
- * -- editTest
- * -- deleteTest
- * -- addNewQuestion
- *
- * -- getAnswers
- * -- deleteQuestion
- *
- *
- */
 
 const questionFormQuestion = document.getElementById('questionFormQuestion');
 const createQuestionForm = document.getElementById('createQuestionForm');

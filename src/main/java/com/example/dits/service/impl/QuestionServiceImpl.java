@@ -131,6 +131,4 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> findAll() {
         return questionRepository.findAll();
     }
-
-
 }

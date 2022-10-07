@@ -1,7 +1,3 @@
-/**
- * TODO:
- * - rename this file
- */
 
 const formTestItem = document.getElementById("form-test-item");
 

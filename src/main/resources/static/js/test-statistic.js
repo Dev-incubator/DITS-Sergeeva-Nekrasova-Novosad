@@ -1,9 +1,3 @@
-/**
- * TODO:
- * - Add classes
- * - rename this file
- * 
- */
 
 const themeSelect = document.getElementById('themeSelect');
 const resultTableBody = document.getElementById('resultTableBody');
